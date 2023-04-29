@@ -42,8 +42,8 @@ while pizzeriaIsOpen:
         "Cheese": [1, cheese],
     }
 
-    for i in pizza.keys():
-        pizza[i] = multilIS(pizza[i][0], pizza[i][1])
+    for i, j in pizza.items():
+        pizza[i] = multilIS(j[0], j[1])
         print(pizza)
 
     query = input("Quit? (Y/n)")

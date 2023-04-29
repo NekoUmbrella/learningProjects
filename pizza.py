@@ -38,8 +38,7 @@ while pizzeriaIsOpen:
           'Sauce':[1, sauce],
           'Cheese':[1, cheese]
      }
-     print(pizza)
-
+     
      for i in pizza.keys():
          pizza[i] = multilIS(pizza[i][0],pizza[i][1])
          print(pizza)

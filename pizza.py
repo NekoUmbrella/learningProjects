@@ -7,7 +7,7 @@ cheese = ["Mozerella", "Cheddar", "Provolone", "Pecorino-Romano"]
 
 
 # Prints all items in a numbered list and asks you to choose a value according to the numbers
-def listItemSelect(l1: list):
+def numListSoloSelect(l1: list):
     for i in range(len(l1)):
         print(i + 1, l1[i])
     while True:
@@ -21,14 +21,14 @@ def listItemSelect(l1: list):
 
 
 # Returns a variable or a list depending on how many I need
-def multiLIS(n: int, l1: list):
+def multiLSS(n: int, l1: list):
     if n == 1:
-        val = listItemSelect(l1)
+        val = numListSoloSelect(l1)
     else:
         val = []
         m = 0
         while m < n:
-            val.append(listItemSelect(l1))
+            val.append(numListSoloSelect(l1))
             m += 1
     return val
 
@@ -48,7 +48,7 @@ while pizzeriaIsOpen:
     }
 
     for i, j in pizza.items():
-        pizza[i] = multiLIS(j[0], j[1])
+        pizza[i] = multiLSS(j[0], j[1])
 
     query = input("Quit? (Y/n)")
     if query in "Nn":

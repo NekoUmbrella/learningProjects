@@ -2,33 +2,38 @@
 # Could be made into a dictionary later
 top = ["Pepperoni", "Sausage", "Olives", "Bell pepper", "Paneer"]
 crust = ["Thin Crust", "Neapolitian Style", "New York Style"]
-sauce = ["Marinara", "White", "Pesto", "Barbequeue"]
+sauce = ["Marinara", "Bechamel", "Pesto", "Barbequeue"]
 cheese = ["Mozerella", "Cheddar", "Provolone", "Pecorino-Romano"]
 
 
-# Prints all items in a numbered list and asks you to choose a value according to the numbers
-def numListSoloSelect(l1: list):
-    for i in range(len(l1)):
-        print(i + 1, l1[i])
+def numberedItemSelect(itemList: list):
+    """
+    Prints a numbered list and returns one item depending on the number you have entered.
+    """
+    for itemIndex in range(len(itemList)):
+        print(itemIndex + 1, itemList[i])
     while True:
         try:
-            x = int(input("Choose an item with the number. "))
-            val = l1[x - 1]
+            inputIndex = int(input("Choose an item with the number. "))
+            item = itemList[inputIndex - 1]
             break
         except IndexError:
             print("Please choose a number from the list!")
-    return val
+    return item
 
 
 # Returns a variable or a list depending on how many I need
-def multiLSS(n: int, l1: list):
+def multipleSelect(n: int, l1: list):
+    """
+    Select single/multiple elements from a given list.
+    """
     if n == 1:
-        val = numListSoloSelect(l1)
+        val = numberedItemSelect(l1)
     else:
         val = []
         m = 0
         while m < n:
-            val.append(numListSoloSelect(l1))
+            val.append(numberedItemSelect(l1))
             m += 1
     return val
 
@@ -47,9 +52,10 @@ while pizzeriaIsOpen:
         "Cheese": [1, cheese],
     }
 
-    for i, j in pizza.items():
-        pizza[i] = multiLSS(j[0], j[1])
+    for components, list in pizza.items():
+        pizza[components] = multipleSelect(list[0], list[1])
 
     query = input("Quit? (Y/n)")
     if query in "Nn":
-        break
+        pizzeriaIsOpen = False
+

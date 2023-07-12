@@ -10,19 +10,17 @@ def studentProfiler(ordinal):
 def ordinalStudentAdder():
     studentList = []
     studentNum = int(input("Enter number of total students."))
-
     n = 0
     ordinals = ["1st", "2nd", "3rd"]
 
     while n < studentNum:
-        if n < 3:
-            p = ordinals[n]
-            print(ordinals[0])
+        onesPlace = n % 10
+        if onesPlace < 3:
+            p = ordinals[onesPlace]
             studentList.append(studentProfiler(p))
             n += 1
-
-        elif n >= 3:
-            tempOrdinal = str(n + 1) + "th"
+        elif onesPlace >= 3:
+            tempOrdinal = str(onesPlace + 1) + "th"
             studentList.append(studentProfiler(tempOrdinal))
             n += 1
 

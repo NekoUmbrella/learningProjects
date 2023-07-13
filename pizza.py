@@ -6,12 +6,13 @@ sauce = ["Marinara", "Bechamel", "Pesto", "Barbequeue"]
 cheese = ["Mozerella", "Cheddar", "Provolone", "Pecorino-Romano"]
 
 
-def numberedItemSelect(itemList: list):
+def numberedItemSelect(itemList):
     """
-    Prints a numbered list and returns one item depending on the number you have entered.
+    Prints a numbered list and returns one item
+    depending on the number you have entered.
     """
     for itemIndex in range(len(itemList)):
-        print(itemIndex + 1, itemList[i])
+        print(itemIndex + 1, itemList[itemIndex])
     while True:
         try:
             inputIndex = int(input("Choose an item with the number. "))
@@ -23,17 +24,17 @@ def numberedItemSelect(itemList: list):
 
 
 # Returns a variable or a list depending on how many I need
-def multipleSelect(n: int, l1: list):
+def multipleSelect(n: int, itemList):
     """
     Select single/multiple elements from a given list.
     """
     if n == 1:
-        val = numberedItemSelect(l1)
+        val = numberedItemSelect(itemList)
     else:
         val = []
         m = 0
         while m < n:
-            val.append(numberedItemSelect(l1))
+            val.append(numberedItemSelect(itemList))
             m += 1
     return val
 
@@ -52,10 +53,13 @@ while pizzeriaIsOpen:
         "Cheese": [1, cheese],
     }
 
-    for components, list in pizza.items():
-        pizza[components] = multipleSelect(list[0], list[1])
+    for components, setupList in pizza.items():
+        numItems = setupList[0]
+        itemsList = setupList[1]
+        pizza[components] = multipleSelect(int(numItems), itemsList)
+
+    print(pizza)
 
     query = input("Quit? (Y/n)")
-    if query in "Nn":
+    if query in "yY":
         pizzeriaIsOpen = False
-

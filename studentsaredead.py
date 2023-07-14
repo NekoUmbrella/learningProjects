@@ -7,6 +7,9 @@ def studentProfiler(ordinal):
     return [name, grade, section, rollno]
 
 
+j = [1, 2, 3]
+
+
 def ordinalStudentAdder():
     studentList = []
     studentNum = int(input("Enter number of total students."))

@@ -24,7 +24,7 @@ def numberedItemSelect(itemList):
 
 
 # Returns a variable or a list depending on how many I need
-def multipleSelect(n: int, itemList):
+def multipleSelect(n: int, itemList: list):
     """
     Select single/multiple elements from a given list.
     """
